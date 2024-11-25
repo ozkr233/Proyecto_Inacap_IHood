@@ -1,0 +1,1 @@
+web: gunicorn appVecinos.wsgi --log-file -
