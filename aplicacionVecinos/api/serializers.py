@@ -21,6 +21,7 @@ class UsuarioRegistroSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = Usuario(
+            username=validated_data['rut'],  # Asigna rut al campo username
             rut=validated_data['rut'],
             email=validated_data['email'],
             nombre=validated_data['nombre'],
