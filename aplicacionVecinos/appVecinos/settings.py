@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "api",
+    'cloudinary',
+    'cloudinary_storage',
     "rest_framework",
     "rest_framework_simplejwt.token_blacklist"
 ]
@@ -81,6 +83,11 @@ REST_FRAMEWORK = {
     ],
 }
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dju0r6caw',
+    'API_KEY': '968867463169873',
+    'API_SECRET': 'DqjXRa3Lt1E9Y7D_39WxLHONaXs',
+}
 
 
 SIMPLE_JWT = {
@@ -124,7 +131,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-# AUTH_USER_MODEL = 'api.Usuario'
+AUTH_USER_MODEL = 'api.Usuario'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -147,3 +154,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

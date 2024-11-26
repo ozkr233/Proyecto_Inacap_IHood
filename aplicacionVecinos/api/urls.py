@@ -5,7 +5,7 @@ from .views import (
     CategoriaViewSet,
     EvidenciaViewSet,
     RegistroUsuarioViewSet,
-    LoginViewSet
+
 )
 
 # Crear un enrutador

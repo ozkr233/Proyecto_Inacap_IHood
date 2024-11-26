@@ -14,6 +14,7 @@ from django.contrib.auth.models import (
     Permission
 )
 from django.utils import timezone
+from cloudinary.models import CloudinaryField
 
 # UsuarioManager
 class UsuarioManager(BaseUserManager):
@@ -144,7 +145,7 @@ class Publicacion(models.Model):
 # Evidencia
 class Evidencia(models.Model):
     publicacion = models.ForeignKey(Publicacion, on_delete=models.RESTRICT)
-    archivo = models.CharField(max_length=255)
+    archivo = CloudinaryField('imagen')
     fecha = models.DateTimeField()
     extension = models.CharField(max_length=30)
 
