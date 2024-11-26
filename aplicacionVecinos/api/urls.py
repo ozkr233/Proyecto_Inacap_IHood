@@ -15,6 +15,7 @@ router.register(r'publicaciones', PublicacionViewSet)
 router.register(r'categorias', CategoriaViewSet)
 router.register(r'evidencias', EvidenciaViewSet)
 router.register(r'registro',RegistroUsuarioViewSet, basename='registro_usuario')
+router.register(r'login',LoginViewSet,basename='log')
 
 # Incluir las rutas generadas por el enrutador
 urlpatterns = router.urls
