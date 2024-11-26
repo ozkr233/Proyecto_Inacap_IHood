@@ -145,7 +145,7 @@ class Publicacion(models.Model):
 # Evidencia
 class Evidencia(models.Model):
     publicacion = models.ForeignKey(Publicacion, on_delete=models.RESTRICT)
-    archivo = CloudinaryField('imagen')
+    archivo = CloudinaryField('archivo')
     fecha = models.DateTimeField()
     extension = models.CharField(max_length=30)
 

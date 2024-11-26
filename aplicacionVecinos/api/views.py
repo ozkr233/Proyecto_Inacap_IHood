@@ -14,6 +14,7 @@ from .serializers import (
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth.hashers import check_password
 from api.models import Usuario
+from django.utils import timezone
 
 
 # ViewSet para Publicacion
@@ -48,4 +49,8 @@ class CategoriaViewSet(viewsets.ModelViewSet):
 class EvidenciaViewSet(viewsets.ModelViewSet):
     queryset = Evidencia.objects.all()
     serializer_class = EvidenciaSerializer
+    def perform_create(self, serializer):
+        # Asegúrate de que se pasa el ID de la publicación y no el objeto
+        publicacion_id = self.request.data.get('publicacion')  # Asegura que es un ID
+        serializer.save(fecha=timezone.now(), publicacion_id=publicacion_id)
 

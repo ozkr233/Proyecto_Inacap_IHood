@@ -12,6 +12,7 @@ from .models import (
     RespuestaMunicipal
 )
 import cloudinary
+from django.utils import timezone
 
 # Serializer para Usuario
 class UsuarioRegistroSerializer(serializers.ModelSerializer):
@@ -68,12 +69,7 @@ class EvidenciaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Evidencia
         fields = [
-            "id",
-            "publicacion",
-            "archivo",
-            "fecha",
-            "extension",
-            "publicacion_id",
+            "id","publicacion","archivo","fecha","extension","publicacion_id",
         ]
 
     def create(self, validated_data):
@@ -89,26 +85,17 @@ class PublicacionCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Publicacion
         fields = [
-            "id",
-            "usuario",
-            "junta_vecinal",
-            "categoria",
-            "departamento",
-            "descripcion",
-            "situacion",
-            "fecha_publicacion",
-            "titulo",
-            "latitud",
-            "longitud",
-            "evidencias",
+            "id","usuario","junta_vecinal","categoria","departamento","descripcion",
+            "situacion","fecha_publicacion","titulo","latitud","longitud","evidencias",
         ]
 
     def create(self, validated_data):
-        evidencias_data = validated_data.pop('evidencias', [])
+        evidencias = validated_data.pop('evidencias', [])
+        print("Evidencias Recibidas:", evidencias)
         publicacion = Publicacion.objects.create(**validated_data)
         
-        for evidencia_data in evidencias_data:
-            Evidencia.objects.create(publicacion=publicacion, **evidencia_data)
+        for evidencia in evidencias:
+            Evidencia.objects.create(publicacion=publicacion, archivo = evidencia,fecha=timezone.now(),extencion = evidencia.name.splt(".")[-1])
         
         return publicacion
 

@@ -83,11 +83,6 @@ REST_FRAMEWORK = {
     ],
 }
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dju0r6caw',
-    'API_KEY': '968867463169873',
-    'API_SECRET': 'DqjXRa3Lt1E9Y7D_39WxLHONaXs',
-}
 
 
 SIMPLE_JWT = {
@@ -143,6 +138,13 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+CLOUDINARY= {
+    'cloud_name' : "dju0r6caw", 
+    'api_key' : "968867463169873", 
+    'api_secret' : "DqjXRa3Lt1E9Y7D_39WxLHONaXs" 
+}
+
 
 
 # Static files (CSS, JavaScript, Images)
